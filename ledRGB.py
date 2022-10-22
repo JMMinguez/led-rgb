@@ -11,19 +11,21 @@ verdePin = 15
 
 def encender(pin):
     GPIO.setmode(GPIO.BOARD)
-    GPIO.setup(pin, GPIO.OUT)
-    GPIO.output(pin, GPIO.HIGH)
-    
+    GPIO.setup(pin,GPIO.OUT)
+    GPIO.output(pin, GPIO.LOW)
+        
 def apagar(pin):
     GPIO.setmode(GPIO.BOARD)
     GPIO.setup(pin, GPIO.OUT)
-    GPIO.output(pin, GPIO.LOW)
+    GPIO.output(pin, GPIO.HIGH)
     
 def encenderRojo():
-    encender(rojoPin)
-    
-while True:
-    encenderRojo()
-    
-return
+    encender(verdePin)
+
+print("Introduce un color")
+
+encenderRojo()
+input("Ejecutando hasta que se pulse una tecla")
+apagar(rojoPin)
+GPIO.cleanup()
     
