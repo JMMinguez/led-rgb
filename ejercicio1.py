@@ -5,39 +5,78 @@
 import time, sys
 import RPi.GPIO as GPIO
 
-rojoPin = 11
-azulPin = 13
-verdePin = 15
 
-def encender(pin): 
-    GPIO.setmode(GPIO.BOARD)
-    GPIO.setup(pin,GPIO.OUT)
-    GPIO.output(pin, GPIO.LOW)
-        
-def apagar(pin):
-    GPIO.setmode(GPIO.BOARD)
-    GPIO.setup(pin, GPIO.OUT)
-    GPIO.output(pin, GPIO.HIGH)
-    
+GPIO.setmode (GPIO.BOARD)
+
+GPIO.setup (11, GPIO.OUT)
+GPIO.setup (13, GPIO.OUT)
+GPIO.setup (15, GPIO.OUT)
+
+
+rojo = GPIO.PWM (11, 100)
+azul = GPIO.PWM (13, 100)
+verde = GPIO.PWM (15, 100)
 
 
 print("Introduce un color")
-pin = input()
-azul = "azul"
-rojo = "rojo"
-verde = "verde"
 
-if pin == azul:
-	encender(azulPin)
-elif pin == rojo:
+rojo.ChangeDutyCycle (1)
+azul.ChangeDutyCycle (1)
+verde.ChangeDutyCycle (1)
+
+pin = input()
+azuul = "azul"
+rojou = "rojo"
+verdeu = "verde"
+morado = "morado"
+blanco = "blanco"
+amarillo = "amarillo"
+cyan = "cyan"
+
+if pin == azuul:
+	rojo.ChangeDutyCycle(0)
+	input("Ejecutando hasta que se pulse una tecla")
+	GPIO.cleanup()
+	
+elif pin == rojou:
 	encender(rojoPin)
-elif pin == verde:
+	input("Ejecutando hasta que se pulse una tecla")
+	GPIO.cleanup()
+	
+elif pin == verdeu:
 	encender(verdePin)
+	input("Ejecutando hasta que se pulse una tecla")
+	GPIO.cleanup()
+	
+elif pin == morado:
+	encender(azulPin)
+	encender(rojoPin)
+	input("Ejecutando hasta que se pulse una tecla")
+	GPIO.cleanup()
+	
+elif pin == blanco:
+	encender(azulPin)
+	encender(rojoPin)
+	encender(verdePin)
+	input("Ejecutando hasta que se pulse una tecla")
+	GPIO.cleanup()
+	
+elif pin == amarillo:
+	encender(verdePin)
+	encender(rojoPin)
+	input("Ejecutando hasta que se pulse una tecla")
+	GPIO.cleanup()
+	
+elif pin == cyan:
+	encender(azulPin)
+	encender(verdePin)
+	input("Ejecutando hasta que se pulse una tecla")
+	GPIO.cleanup()
+	
 else:
-	print("")
+	print("Error")
 	
 
 
-input("Ejecutando hasta que se pulse una tecla")
-GPIO.cleanup()
+
     
