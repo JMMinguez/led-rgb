@@ -20,12 +20,11 @@ def apagar(pin):
     GPIO.output(pin, GPIO.HIGH)
     
 def encenderRojo():
-    encender(verdePin)
+    encender(azulPin)
 
 print("Introduce un color")
 
 encenderRojo()
 input("Ejecutando hasta que se pulse una tecla")
-apagar(rojoPin)
 GPIO.cleanup()
     
