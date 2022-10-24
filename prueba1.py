@@ -20,9 +20,6 @@ blue = GPIO.PWM(led_azul, 500)
 green = GPIO.PWM(led_verde, 500)
 
 
-
-print("Elija entre los siguientes colores: rojo, azul, verde, blanco, amarillo, cyan, morado o rgb")
-pin = input()
 azul = "azul"
 verde = "verde"
 rojo = "rojo"
@@ -30,14 +27,19 @@ morado = "morado"
 amarillo = "amarillo"
 cyan = "cyan"
 blanco = "blanco"
+naranja = "naranja"
 rgb = "rgb"
 
 def encender(x, y, z):
 	red.start(x)
 	blue.start(y)
 	green.start(z)
+	
+def apagar():
 	input("Ejecutando hasta que se pulse una tecla")
-	GPIO.cleanup()
+	red.start(100)
+	blue.start(100)
+	green.start(100)
 
 def encenderRGB():
 	RUNNING = True
@@ -65,57 +67,82 @@ def encenderRGB():
 				time.sleep(0.025)
 	except KeyboardInterrupt:
 		RUNNING = False
-		GPIO.cleanup()
+		apagar()
 
 def main():
-	if pin == azul:
-		x = 100
-		y = 1
-		z = 100
-		encender(x, y, z)
-	
+	PROGRAMA = True
+	red.start(100)
+	blue.start(100)
+	green.start(100)
 
-	elif pin == rojo:
-		x = 1
-		y = 100
-		z = 100
-		encender(x, y, z)
-	
-	elif pin == verde:
-		x = 100
-		y = 100
-		z = 1
-		encender(x, y, z)
+	try:
+		while (PROGRAMA):
 		
-	elif pin == morado:
-		x = 1
-		y = 1
-		z = 100
-		encender(x, y, z)
-	
-	elif pin == cyan:
-		x = 100
-		y = 1
-		z = 1
-		encender(x, y, z)
-	
-	elif pin == amarillo:
-		x = 1
-		y = 100
-		z = 1
-		encender(x, y, z)
+			print("Elija entre los siguientes colores: rojo, azul, verde, blanco, 					amarillo, cyan, morado, naranja o rgb")
+			pin = input()
+			
+			if pin == azul:
+				x = 100
+				y = 1
+				z = 100
+				encender(x, y, z)
+				apagar()
 
-	elif pin == blanco:
-		x = 1
-		y = 1
-		z = 1
-		encender(x, y, z)
+			elif pin == rojo:
+				x = 1
+				y = 100
+				z = 100
+				encender(x, y, z)
+				apagar()
 	
-	elif pin == rgb:
-		encenderRGB()
+			elif pin == verde:
+				x = 100
+				y = 100
+				z = 1
+				encender(x, y, z)
+				apagar()
+		
+			elif pin == morado:
+				x = 1
+				y = 1
+				z = 100
+				encender(x, y, z)
+				apagar()
 	
-	else:
-		print("Error")
+			elif pin == cyan:
+				x = 100
+				y = 1
+				z = 1
+				encender(x, y, z)
+				apagar()
+	
+			elif pin == amarillo:
+				x = 1
+				y = 100
+				z = 1
+				encender(x, y, z)
+				apagar()
+
+			elif pin == blanco:
+				x = 1
+				y = 1
+				z = 1
+				encender(x, y, z)
+				apagar()
+			elif pin == naranja:
+				red.start(1)
+				blue.start(100)
+				green.start(1)
+				green.ChangeDutyCycle(75)
+				apagar()
+			elif pin == rgb:
+				encenderRGB()
+	
+			else:
+				print("Error")
+				GPIO.cleanup()
+	except KeyboardInterrupt:
+		PROGRAMA = False
 		GPIO.cleanup()
 
 if __name__ == "__main__":
