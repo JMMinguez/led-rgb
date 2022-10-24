@@ -30,25 +30,29 @@ blanco = "blanco"
 naranja = "naranja"
 rgb = "rgb"
 
+
 def encender(x, y, z):
 	red.start(x)
 	blue.start(y)
 	green.start(z)
+	input("Ejecutando hasta que se pulse una tecla")
 	
 def apagar():
-	input("Ejecutando hasta que se pulse una tecla")
 	red.start(100)
 	blue.start(100)
 	green.start(100)
 
 def encenderRGB():
 	RUNNING = True
+	#Ejecutara indefinidamente el modo RGB hasta que se pulse ctrl+c
 	try:
+		print("Ejecutando hasta que se pulse ctrl+c")
 		while (RUNNING):
 			red.start(100)
 			blue.start(1)
 			green.start(1)
-		
+			
+			#Para realizar una transicion suave entre colores usaremos varios bucles for y el ChangeDutyCycle
 			for x in range(1,101):
 				green.ChangeDutyCycle(x)
 				time.sleep(0.025)
@@ -71,10 +75,9 @@ def encenderRGB():
 
 def main():
 	PROGRAMA = True
-	red.start(100)
-	blue.start(100)
-	green.start(100)
-
+	apagar()
+	
+	#Se ejecutara el programa indefinidamente hasta que se cierre el programa como ctrl+c
 	try:
 		while (PROGRAMA):
 		
@@ -82,6 +85,7 @@ def main():
 			pin = input()
 			
 			if pin == azul:
+				#Declaramos las intensidades de cada color y va a la funcion encender
 				x = 100
 				y = 1
 				z = 100
@@ -129,12 +133,16 @@ def main():
 				z = 1
 				encender(x, y, z)
 				apagar()
+				
 			elif pin == naranja:
+				#Para modificar la intensidad del verde en este caso usamos el ChangeDutyCYcle
 				red.start(1)
 				blue.start(100)
 				green.start(1)
-				green.ChangeDutyCycle(75)
+				green.ChangeDutyCycle(90)
+				input("Ejecutando hasta que se pulse una tecla")
 				apagar()
+				
 			elif pin == rgb:
 				encenderRGB()
 	

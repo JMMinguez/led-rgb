@@ -5,9 +5,10 @@
 import time, sys
 import RPi.GPIO as GPIO
 
-rojoPin = 11
-azulPin = 13
-verdePin = 15
+rojo = 11
+azul = 13
+verde = 15
+
 
 def encender(pin):
     GPIO.setmode(GPIO.BOARD)
@@ -19,12 +20,21 @@ def apagar(pin):
     GPIO.setup(pin, GPIO.OUT)
     GPIO.output(pin, GPIO.HIGH)
     
-def encenderRojo():
-    encender(azulPin)
 
-print("Introduce un color")
+def main():
+	PROGRAMA = True
+	try:
+		while(PROGRAMA):
+			print("Introduce un color")
+			pin = input()
+			encender(pin)
+			input("Ejecutando hasta que se pulse una tecla")
+			apagar(pin)
+			
+	except KeyboardInterrupt:
+		PROGRAMA = False
+		GPIO.cleanup()
 
-encenderRojo()
-input("Ejecutando hasta que se pulse una tecla")
-GPIO.cleanup()
+if __name__ == "__main__":
+	main()	
     
