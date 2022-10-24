@@ -9,6 +9,9 @@ rojo = 11
 azul = 13
 verde = 15
 
+rojo = "rojo"
+azul = "azul"
+verde = "verde"
 
 def encender(pin):
     GPIO.setmode(GPIO.BOARD)
@@ -27,6 +30,17 @@ def main():
 		while(PROGRAMA):
 			print("Introduce un color")
 			pin = input()
+			
+			if pin == rojo:
+				pin  = 11
+			elif pin == azul:
+				pin = 13
+			elif pin == verde:
+				pin = 15
+			else:
+				print("Error")
+				GPIO.cleanup()	
+					
 			encender(pin)
 			input("Ejecutando hasta que se pulse una tecla")
 			apagar(pin)

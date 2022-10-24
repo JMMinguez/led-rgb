@@ -4,7 +4,6 @@
 
 import time, sys
 import RPi.GPIO as GPIO
-run = True
 
 led_rojo = 11
 led_azul = 13
