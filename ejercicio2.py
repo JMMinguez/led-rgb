@@ -33,7 +33,9 @@ def config(color, valor):
 	global x
 	global y
 	global z
+	global ERROR
 	
+	ERROR = False
 	x = x
 	y = y
 	z = z
@@ -62,6 +64,7 @@ def config(color, valor):
 	else:
 		ERROR = True
 		
+
 def main():
 	PROGRAMA = True
 	
@@ -72,12 +75,17 @@ def main():
 	try:
 		while(PROGRAMA):
 			
-			ERROR = False
 			print("Introduce una accion (encender o apagar) seguido de un color (rojo, azul, verde, morado, cyan, amarillo o blanco)")
 			msg = input()
 			#Separamos el msg en dos partes, accion y color
 			orden = msg.split()
+			
 			accion = orden[0]
+			if accion == "salir":
+				GPIO.cleanup()
+				PROGRAMA = False
+				break
+				
 			color = orden[1]
 				
 			if accion == "encender":
@@ -95,6 +103,7 @@ def main():
 					print("Color erroneo")
 				else:
 					onoff(x, y, z)
+					
 			else:
 				print("accion erronea")
 	except KeyboardInterrupt:
