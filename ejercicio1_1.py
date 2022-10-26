@@ -46,4 +46,8 @@ def main():
 
 if __name__ == "__main__":
 	main()	
-    
+# Casos de uso:
+#-Introducir string no correspondiente a los colores --> ERROR y velve a pedirlo
+#-Caracteres que no sean letras --> ERROR + vuleve a pedirlo
+#-Si se pulsa Ctrl+C --> programa se cierra
+#
