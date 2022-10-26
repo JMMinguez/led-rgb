@@ -6,9 +6,6 @@
 import time, sys
 import RPi.GPIO as GPIO
 
-rojo = "rojo"
-azul = "azul"
-verde = "verde"
 
 def encender(pin):
     GPIO.setmode(GPIO.BOARD)
@@ -30,13 +27,13 @@ def main():
 			print("Introduce un color: rojo, azul o verde")
 			pin = input()
 			
-			if pin == rojo:
+			if pin == "rojo" or pin == "Rojo":
 				pin  = 11
 				encender(pin)
-			elif pin == azul:
+			elif pin == "azul" or pin == "Azul":
 				pin = 13
 				encender(pin)
-			elif pin == verde:
+			elif pin == "verde" or pin == "Verde":
 				pin = 15
 				encender(pin)
 			else:
