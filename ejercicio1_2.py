@@ -136,7 +136,7 @@ def main():
 	
 			else:
 				print("Error")
-				GPIO.cleanup()
+				
 	except KeyboardInterrupt:
 		PROGRAMA = False
 		GPIO.cleanup()
