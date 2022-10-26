@@ -1,7 +1,7 @@
-
-    # ledRGB.py
+# ledRGB.py
 # Practica 2. Sensores y actuadores. URJC. Julio Vega
-# Codigo de ejemplo de uso del LED RGB
+# Ejercicio 1.1 --> encender y apagar los leds por seprado
+# Autores --> Jorge Martín y Rebeca Sánchez
 
 import time, sys
 import RPi.GPIO as GPIO
