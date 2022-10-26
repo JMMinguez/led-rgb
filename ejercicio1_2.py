@@ -1,6 +1,7 @@
 # ledRGB.py
 # Practica 2. Sensores y actuadores. URJC. Julio Vega
-# Codigo de ejemplo de uso del LED RGB
+# Ejercicio 1.2 --> encender y apagar nueve colores diferentes
+# Autores --> Jorge Martín y Rebeca Sánchez
 
 import time, sys
 import RPi.GPIO as GPIO
@@ -143,4 +144,8 @@ def main():
 
 if __name__ == "__main__":
 	main()		
-		
+
+#Casos de uso:
+#-Colores erróneos --> ERROR + volver a pedir
+#-Caracteres que no sean letras --> ERROR + volver a pedir
+#
