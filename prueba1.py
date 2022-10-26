@@ -19,17 +19,6 @@ blue = GPIO.PWM(led_azul, 500)
 green = GPIO.PWM(led_verde, 500)
 
 
-azul = "azul"
-verde = "verde"
-rojo = "rojo"
-morado = "morado"
-amarillo = "amarillo"
-cyan = "cyan"
-blanco = "blanco"
-naranja = "naranja"
-rgb = "rgb"
-
-
 def encender(x, y, z):
 	red.start(x)
 	blue.start(y)
@@ -80,10 +69,10 @@ def main():
 	try:
 		while (PROGRAMA):
 		
-			print("Elija entre los siguientes colores: rojo, azul, verde, blanco, 					amarillo, cyan, morado, naranja o rgb")
+			print("Elija entre los siguientes colores: rojo, azul, verde, blanco, amarillo, cyan, morado, naranja o rgb")
 			pin = input()
 			
-			if pin == azul:
+			if pin == "azul":
 				#Declaramos las intensidades de cada color y va a la funcion encender
 				x = 100
 				y = 1
@@ -91,49 +80,49 @@ def main():
 				encender(x, y, z)
 				apagar()
 
-			elif pin == rojo:
+			elif pin == "rojo":
 				x = 1
 				y = 100
 				z = 100
 				encender(x, y, z)
 				apagar()
 	
-			elif pin == verde:
+			elif pin == "verde":
 				x = 100
 				y = 100
 				z = 1
 				encender(x, y, z)
 				apagar()
 		
-			elif pin == morado:
+			elif pin == "morado":
 				x = 1
 				y = 1
 				z = 100
 				encender(x, y, z)
 				apagar()
 	
-			elif pin == cyan:
+			elif pin == "cyan":
 				x = 100
 				y = 1
 				z = 1
 				encender(x, y, z)
 				apagar()
 	
-			elif pin == amarillo:
+			elif pin == "amarillo":
 				x = 1
 				y = 100
 				z = 1
 				encender(x, y, z)
 				apagar()
 
-			elif pin == blanco:
+			elif pin == "blanco":
 				x = 1
 				y = 1
 				z = 1
 				encender(x, y, z)
 				apagar()
 				
-			elif pin == naranja:
+			elif pin == "naranja":
 				#Para modificar la intensidad del verde en este caso usamos el ChangeDutyCYcle
 				red.start(1)
 				blue.start(100)
@@ -142,7 +131,7 @@ def main():
 				input("Ejecutando hasta que se pulse una tecla")
 				apagar()
 				
-			elif pin == rgb:
+			elif pin == "rgb":
 				encenderRGB()
 	
 			else:
