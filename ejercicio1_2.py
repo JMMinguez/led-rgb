@@ -9,6 +9,8 @@ import RPi.GPIO as GPIO
 led_rojo = 11
 led_azul = 13
 led_verde = 15
+TOPE = 1
+MIN = 100
 
 GPIO.setmode(GPIO.BOARD)
 GPIO.setup(led_rojo, GPIO.OUT)
@@ -27,9 +29,9 @@ def encender(x, y, z):
 	input("Ejecutando hasta que se pulse una tecla")
 	
 def apagar():
-	red.start(100)
-	blue.start(100)
-	green.start(100)
+	red.start(MIN)
+	blue.start(MIN)
+	green.start(MIN)
 
 def encenderRGB():
 	RUNNING = True
@@ -75,59 +77,38 @@ def main():
 			
 			if pin == "azul":
 				#Declaramos las intensidades de cada color y va a la funcion encender
-				x = 100
-				y = 1
-				z = 100
-				encender(x, y, z)
+				encender(MIN, TOPE, MIN)
 				apagar()
 
 			elif pin == "rojo":
-				x = 1
-				y = 100
-				z = 100
-				encender(x, y, z)
+				encender(TOPE, MIN, MIN)
 				apagar()
 	
 			elif pin == "verde":
-				x = 100
-				y = 100
-				z = 1
-				encender(x, y, z)
+				encender(MIN, MIN, TOPE)
 				apagar()
 		
 			elif pin == "morado":
-				x = 1
-				y = 1
-				z = 100
-				encender(x, y, z)
+				encender(TOPE, TOPE, MIN)
 				apagar()
 	
 			elif pin == "cyan":
-				x = 100
-				y = 1
-				z = 1
-				encender(x, y, z)
+				encender(MIN, TOPE, TOPE)
 				apagar()
 	
 			elif pin == "amarillo":
-				x = 1
-				y = 100
-				z = 1
-				encender(x, y, z)
+				encender(TOPE, MIN, TOPE)
 				apagar()
 
 			elif pin == "blanco":
-				x = 1
-				y = 1
-				z = 1
-				encender(x, y, z)
+				encender(TOPE, TOPE, TOPE)
 				apagar()
 				
 			elif pin == "naranja":
 				#Para modificar la intensidad del verde en este caso usamos el ChangeDutyCYcle
-				red.start(1)
-				blue.start(100)
-				green.start(1)
+				red.start(TOPE)
+				blue.start(MIN)
+				green.start(TOPE)
 				green.ChangeDutyCycle(90)
 				input("Ejecutando hasta que se pulse una tecla")
 				apagar()

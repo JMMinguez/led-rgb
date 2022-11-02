@@ -9,6 +9,8 @@ import RPi.GPIO as GPIO
 led_rojo = 11
 led_azul = 13
 led_verde = 15
+TOPE = 1
+MIN = 100
 
 GPIO.setmode(GPIO.BOARD)
 GPIO.setup(led_rojo, GPIO.OUT)
@@ -20,9 +22,9 @@ blue = GPIO.PWM(led_azul, 500)
 green = GPIO.PWM(led_verde, 500)
 
 	
-x = 100
-y = 100
-z = 100
+x = MIN
+y = MIN
+z = MIN
 
 def onoff(x, y, z):
 	red.start(x)
@@ -69,9 +71,9 @@ def config(color, valor):
 def main():
 	PROGRAMA = True
 	
-	red.start(100)
-	blue.start(100)
-	green.start(100)
+	red.start(MIN)
+	blue.start(MIN)
+	green.start(MIN)
 
 	try:
 		while(PROGRAMA):
